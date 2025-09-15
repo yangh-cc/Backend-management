@@ -1,5 +1,6 @@
 <script lang='ts' setup>
 import CommonAside from '@/components/CommonAside.vue';
+import CommonHeader from '@/components/CommonHeader.vue';
 </script>
 
 <template>
@@ -11,7 +12,7 @@ import CommonAside from '@/components/CommonAside.vue';
         <common-header />
         </el-header>
         <el-main class="right-main">
-            main
+        <router-view></router-view>
         </el-main>
     </el-container>
     </el-container>
@@ -23,6 +24,6 @@ import CommonAside from '@/components/CommonAside.vue';
     height: 100%;
 }
 .el-header{
-    background-color: pink;
+    background-color: #333;
 }
 </style>
