@@ -10,6 +10,7 @@
     },
     /* Linting */
     "strict": true,
+    "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
@@ -19,6 +20,8 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "src/api/mockData/home.ts",
+    "src/api/mock.ts"
   ]
 }

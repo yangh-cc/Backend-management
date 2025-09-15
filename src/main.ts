@@ -6,9 +6,13 @@ import { createPinia } from 'pinia'
 import '@/assets/less/index.less'
 import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import '@/api/mock'
 import "./style.css"
+import api from '@/api/api'
 const pinia = createPinia()
 const app = createApp(App)
+
+app.config.globalProperties.$api = api
 app.use(ElementPlus)
 app.use(pinia)
 app.use(router).mount('#app')

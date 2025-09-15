@@ -1,0 +1,16 @@
+// 整个项目api的统一管理
+import request from "./request";
+
+// 定义类型别名
+
+
+//请求页面左侧的表格数据
+export default {
+    getTableData() {
+        return request({
+            url: '/home/getTable',
+            method: 'get',
+            mock: true
+        })
+    },
+}
