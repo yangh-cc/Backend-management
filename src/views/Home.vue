@@ -61,20 +61,20 @@ onMounted(() => {
                 </el-table>
             </el-card>
         </el-col>
-        <!-- <el-col :span="16" style="margin-top: 20px;">
+        <el-col :span="16" style="margin-top: 20px;">
             <div class="num">
                 <el-card
                 :body-style="{display:'flex',padding:0}"
                 v-for="item in countData" :key="item.name"
                 >
                 <component :is="item.icon" class="icons" :style="{background:item.color}"></component>
-                </el-card>
-                <div class="detail">
+                 <div class="detail">
                     <p class="num">￥{{ item.value  }}</p>
                     <p class="txt">￥{{ item.name  }}</p>
                 </div>
+                </el-card>
             </div>
-        </el-col> -->
+        </el-col>
     </el-row>
 </template>
 <style scoped lang="less">
