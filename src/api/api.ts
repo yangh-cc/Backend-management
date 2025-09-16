@@ -13,4 +13,10 @@ export default {
             mock: true
         })
     },
+    getCountData() {
+        return request({
+            url:'/home/getCountData',
+            method:'get'
+        })
+    }
 }

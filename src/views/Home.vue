@@ -6,19 +6,11 @@ const getImageUrl = (user: string): string => {
     return new URL(`../assets/images/${user}.png`, import.meta.url).href
 }
 const tableData = ref([
-    {
-        name: "Java",
-        todayBuy: 100,
-        monthBuy: 200,
-        totalBuy: 300,
-    },
-    {
-        name: "Python",
-        todayBuy: 100,
-        monthBuy: 200,
-        totalBuy: 300,
-    }
+
 ])
+
+const countData = ref([])
+console.log(countData.value);
 
 const tableLabel = ref({
     name: "课程",
@@ -27,13 +19,21 @@ const tableLabel = ref({
     totalBuy: "总购买",
 })
 
-const getTableData = async ()=>{
+const getTableData = async () => {
     const data = await proxy.$api.getTableData()
     tableData.value = data.tableData
 }
-getTableData()
-onMounted(()=>{
-
+const getCountData = async () => {
+    const data = await proxy.$api.getCountData()
+    console.log(data);
+    
+    countData.value = data
+    console.log(countData.value);
+    
+}
+onMounted(() => {
+    getTableData()
+    getCountData()
 })
 
 </script>
@@ -61,6 +61,20 @@ onMounted(()=>{
                 </el-table>
             </el-card>
         </el-col>
+        <!-- <el-col :span="16" style="margin-top: 20px;">
+            <div class="num">
+                <el-card
+                :body-style="{display:'flex',padding:0}"
+                v-for="item in countData" :key="item.name"
+                >
+                <component :is="item.icon" class="icons" :style="{background:item.color}"></component>
+                </el-card>
+                <div class="detail">
+                    <p class="num">￥{{ item.value  }}</p>
+                    <p class="txt">￥{{ item.name  }}</p>
+                </div>
+            </div>
+        </el-col> -->
     </el-row>
 </template>
 <style scoped lang="less">
@@ -98,7 +112,40 @@ onMounted(()=>{
 
             span {
                 color: #666;
-                margin-left: 60px;           }
+                margin-left: 60px;
+            }
+        }
+    }
+    .num{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .el-card{
+            width: 32%;
+            margin-bottom: 20px;
+        }
+        .icons{
+            width: 80px;
+            height: 80px;
+            font-size: 30px;
+            text-align: center;
+            line-height: 80px;
+            color: #fff;
+        }
+        .detail{
+            margin-left: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .num{
+                font-size: 30px;
+                margin-bottom: 10px;
+            }
+            .tex{
+                font-size: 15px;
+                text-align: center;
+                color: #999;
+            }
         }
     }
 }
