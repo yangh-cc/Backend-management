@@ -11,7 +11,6 @@ const router = useRouter()
 const { proxy } = getCurrentInstance()
 const handlelogin = async () => {
     const res = await proxy.$api.getMenu(loginForm)
-    console.log(res);
     //拿到菜单以后，在哪里显示呢？
     store.updateMenuList(res.menuList)
     store.state.token = res.token

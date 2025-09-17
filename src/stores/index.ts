@@ -21,12 +21,11 @@ function initState() {
 }
 export const useAllDataStore = defineStore('allData', () => {
     const state = ref(initState())
-
     watch(state,(newObj)=>{
         if(!newObj.token)return 
         localStorage.setItem('store', JSON.stringify(newObj))
     },{
-        depp:true
+        deep:true
     })
     function selectMenu(val) {
         if (val.name === 'home') {
