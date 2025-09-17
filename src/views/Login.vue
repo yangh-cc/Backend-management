@@ -1,17 +1,23 @@
 <script lang='ts' setup>
 import { reactive, getCurrentInstance } from 'vue';
+import { useAllDataStore } from '@/stores';
+import { useRouter } from 'vue-router';
 const loginForm = reactive({
     username: '',
     password: ''
 })
-
+const store = useAllDataStore()
+const router = useRouter()
 const { proxy } = getCurrentInstance()
 const handlelogin = async () => {
     const res = await proxy.$api.getMenu(loginForm)
     console.log(res);
     //拿到菜单以后，在哪里显示呢？
-
-
+    store.updateMenuList(res.menuList)
+    store.state.token = res.token
+     store.addMenu(router)
+    router.push('/home')
+   
 }
 
 </script>
